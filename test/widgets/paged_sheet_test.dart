@@ -316,7 +316,7 @@ void main() {
           shape.brRadius.x == bottom;
     });
 
-    testWidgets('keep a moving page square with the sheet corners', (
+    testWidgets('a moving page stays square with the sheet corners', (
       tester,
     ) async {
       await pumpSheet(tester);
@@ -327,25 +327,20 @@ void main() {
       await tester.pump();
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 60));
-      expect(cardClips(), hasLength(2));
+      expect(cardClips(), isEmpty);
 
       await tester.pumpAndSettle();
       expect(cardClips(), isEmpty);
     });
 
-    testWidgets('round a moving page in a form sheet with its corners', (
-      tester,
-    ) async {
+    testWidgets('a moving page stays square in a form sheet', (tester) async {
       await pumpSheet(tester, type: SheetType.formSheet);
 
       push('second', top: 100);
       await tester.pump();
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 60));
-      expect(
-        cardClipsOf(tester, top: AppCorner.alert, bottom: AppCorner.alert),
-        hasLength(2),
-      );
+      expect(cardClipsOf(tester, top: 0, bottom: 0), isEmpty);
     });
 
     testWidgets('leave the page below in view when popped while covered', (
