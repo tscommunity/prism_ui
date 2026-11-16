@@ -28,7 +28,7 @@ class Tooltip extends StatelessWidget {
     if (message.isEmpty) {
       return child;
     }
-    return RawTooltip(
+    Widget tooltip = RawTooltip(
       semanticsTooltip: excludeFromSemantics ? null : message,
       tooltipBuilder: (context, animation) => FadeTransition(
         opacity: animation,
@@ -45,6 +45,10 @@ class Tooltip extends StatelessWidget {
       ignorePointer: true,
       child: child,
     );
+    if (defaultTargetPlatform == TargetPlatform.windows) {
+      tooltip = Semantics(container: true, child: tooltip);
+    }
+    return tooltip;
   }
 }
 
