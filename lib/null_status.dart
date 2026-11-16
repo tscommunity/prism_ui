@@ -563,7 +563,7 @@ class _IllustrationPainter extends CustomPainter {
         canvas.drawRSuperellipse(
           RSuperellipse.fromRectAndRadius(
             const Rect.fromLTRB(-0.5, -0.5, 0.5, 0.5),
-            const Radius.circular(0.3),
+            Radius.zero,
           ),
           Paint()..color = soft,
         );

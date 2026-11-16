@@ -6,7 +6,7 @@ Start with one color. Choose a style. Every component follows, in light and dark
 
 ## Highlights
 
-- **Feels like iOS.** Liquid glass, fluid transitions, sheets that snap into place, and soft continuous corners.
+- **Feels like iOS.** Liquid glass, fluid transitions, sheets that snap into place, and clean square corners.
 - **Yours in any color.** Four theme styles turn a single color into a complete look.
 - **Light and dark, equally polished.** Both modes are tuned to match, so neither feels like an afterthought.
 - **Nothing extra.** Built on Flutter's widgets alone, with no Material or Cupertino underneath.
@@ -78,7 +78,7 @@ display themselves.
 | **Controls** | Buttons, `Switch`, `Checkbox`, `Slider`, `SegmentedControl`, `Chip`, text fields, search |
 | **Lists** | `ListRow`, grouped lists, drag to reorder, high-performance slivers |
 | **Effects** | `LiquidGlass`, press feedback, page transitions, skeletons, loading indicators |
-| **Foundation** | Typography, surfaces, superellipse shapes, and a stroke-based icon engine |
+| **Foundation** | Typography, surfaces, square shapes, and a stroke-based icon engine |
 
 ## Make it yours
 

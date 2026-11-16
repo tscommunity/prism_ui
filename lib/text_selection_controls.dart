@@ -111,9 +111,11 @@ class _HandlePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     const center = Offset(_knobDiameter / 2, _knobDiameter / 2);
     canvas
-      ..drawCircle(
-        center.translate(0, 2),
-        _knobDiameter / 2,
+      ..drawRect(
+        Rect.fromCircle(
+          center: center.translate(0, 2),
+          radius: _knobDiameter / 2,
+        ),
         Paint()
           ..color = const Color(0x4D000000)
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
@@ -124,9 +126,12 @@ class _HandlePainter extends CustomPainter {
         Paint()
           ..color = color
           ..strokeWidth = _barWidth
-          ..strokeCap = StrokeCap.round,
+          ..strokeCap = StrokeCap.butt,
       )
-      ..drawCircle(center, _knobDiameter / 2, Paint()..color = color);
+      ..drawRect(
+        Rect.fromCircle(center: center, radius: _knobDiameter / 2),
+        Paint()..color = color,
+      );
   }
 
   @override

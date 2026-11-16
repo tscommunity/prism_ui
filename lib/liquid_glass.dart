@@ -1074,9 +1074,7 @@ class _RenderLiquidGlass extends RenderProxyBox {
         offset & size,
         shape: outline != null
             ? LiquidGlassOutline(outline)
-            : LiquidGlassCorners(
-                _borderRadius ?? BorderRadius.circular(size.shortestSide / 2),
-              ),
+            : LiquidGlassCorners(_borderRadius ?? BorderRadius.zero),
         style: _style,
         shadows: _shadows,
         group: _group,
@@ -1106,8 +1104,7 @@ sealed class LiquidGlassShape {
 final class LiquidGlassCorners extends LiquidGlassShape {
   const LiquidGlassCorners(this.radius);
 
-  LiquidGlassCorners.circular(double radius)
-    : radius = BorderRadius.circular(radius);
+  LiquidGlassCorners.circular(double radius) : radius = BorderRadius.zero;
 
   final BorderRadius radius;
 }

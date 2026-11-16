@@ -322,10 +322,7 @@ Path gooOutline(List<Rect> pills, List<double> blends) {
   var outline = Path();
   for (final pill in pills) {
     outline.addRSuperellipse(
-      RSuperellipse.fromRectAndRadius(
-        pill,
-        Radius.circular(pill.shortestSide / 2),
-      ),
+      RSuperellipse.fromRectAndRadius(pill, Radius.zero),
     );
   }
   for (var index = 1; index < pills.length; index++) {
@@ -347,14 +344,10 @@ Path gooPairOutline(
   bool coarse = false,
 }) {
   final platter = Path()
-    ..addRSuperellipse(
-      RSuperellipse.fromRectAndRadius(a, Radius.circular(radius)),
-    );
+    ..addRSuperellipse(RSuperellipse.fromRectAndRadius(a, Radius.zero));
   final pillRadius = b.shortestSide / 2;
   final pill = Path()
-    ..addRSuperellipse(
-      RSuperellipse.fromRectAndRadius(b, Radius.circular(pillRadius)),
-    );
+    ..addRSuperellipse(RSuperellipse.fromRectAndRadius(b, Radius.zero));
   if (gooPairDepth(a, radius, b, blend) >= 0) {
     return platter;
   }
@@ -386,10 +379,10 @@ double gooPairDepth(Rect a, double radius, Rect b, double blend) {
 }
 
 double _pillDistance(Rect pill, Offset point) =>
-    _roundedDistance(pill, pill.shortestSide / 2, point);
+    _roundedDistance(pill, 0, point);
 
 double _roundedDistance(Rect rect, double radius, Offset point) {
-  final round = math.min(radius, rect.shortestSide / 2);
+  const round = 0.0;
   final qx = (point.dx - rect.center.dx).abs() - rect.width / 2 + round;
   final qy = (point.dy - rect.center.dy).abs() - rect.height / 2 + round;
   return Offset(math.max(qx, 0), math.max(qy, 0)).distance +

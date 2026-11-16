@@ -303,7 +303,7 @@ class _RelayPainter extends CustomPainter {
             width: _groundSize.width,
             height: _groundSize.height,
           ),
-          Radius.circular(_groundSize.height / 2),
+          Radius.zero,
         ),
         ground,
       );
@@ -498,7 +498,7 @@ class _LoadingBarPainter extends CustomPainter {
     canvas.drawRSuperellipse(
       RSuperellipse.fromRectAndRadius(
         Rect.fromLTRB(left, 0, right, height),
-        Radius.circular(height / 2),
+        Radius.zero,
       ),
       paint,
     );

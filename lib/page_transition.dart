@@ -94,10 +94,8 @@ typedef BarItemsMotion = ({
   double? tracking,
 });
 
-/// The display's corners where the platform reports them, which Android does
-/// from API 31; elsewhere a moving page stays square.
-BorderRadius displayRadiusOf(BuildContext context) =>
-    MediaQuery.displayCornerRadiiOf(context) ?? BorderRadius.zero;
+/// A moving page stays square on every platform.
+BorderRadius displayRadiusOf(BuildContext context) => BorderRadius.zero;
 
 /// The [ModalRoute.delegatedTransition] of every card route. Sharing it keeps
 /// Flutter from wrapping one's page in another's transition, which would move
