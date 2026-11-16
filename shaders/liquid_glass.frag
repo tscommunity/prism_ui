@@ -311,11 +311,7 @@ void outlineGeometry(vec2 p, out float inset, out vec2 normal) {
 // from its center and its long sides along x. Its ends are the circles an
 // octant whose side is its radius makes.
 float pillInset(vec2 q, vec2 halfSize, vec4 curve, vec2 center) {
-  float c = halfSize.x - halfSize.y;
-  if (q.y + c < q.x) {
-    return halfSize.y - length(q - vec2(c, 0.0));
-  }
-  return octantInset(vec2(q.x, q.y + c), halfSize.x, curve, center);
+  return min(halfSize.x - abs(q.x), halfSize.y - abs(q.y));
 }
 
 // The distance inward from pills flowing together and its outward normal,
@@ -337,10 +333,8 @@ void gooGeometry(
     if (float(i) < uGoo[0].x) {
       vec4 pill = uPills[i];
       vec2 q = p - pill.xy;
-      bool rounded = i == 0 && uGoo[1].z > 0.0;
-      float radius = rounded
-          ? min(uGoo[1].z, min(pill.z, pill.w))
-          : min(pill.z, pill.w);
+      bool rounded = false;
+      float radius = 0.0;
       float di = roundedBoxDistance(q, pill.zw, radius);
       vec2 ni = roundedBoxNormal(q, pill.zw, radius);
       if (di < nearest) {

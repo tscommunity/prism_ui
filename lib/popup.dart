@@ -889,7 +889,6 @@ class _RenderPopupMorph extends RenderProxyBox {
                     droplet!.shift(-shape.topLeft),
                   ],
                   const [_dropletBlend],
-                  firstRadius: math.max(radius, 1e-3),
                 ),
           style: LiquidGlassStyle.lerp(
             glass.from,

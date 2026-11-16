@@ -316,10 +316,12 @@ void main() {
           shape.brRadius.x == bottom;
     });
 
-    testWidgets('round a moving page with the sheet corners', (tester) async {
+    testWidgets('keep a moving page square with the sheet corners', (
+      tester,
+    ) async {
       await pumpSheet(tester);
       Iterable<ClipRSuperellipseLayer> cardClips() =>
-          cardClipsOf(tester, top: 38, bottom: 38);
+          cardClipsOf(tester, top: 0, bottom: 0);
 
       push('second', top: 100);
       await tester.pump();

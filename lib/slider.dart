@@ -327,8 +327,8 @@ class _GappedSliderShape extends SliderShape {
   static const _restWidth = 4.0;
   static const _activeWidth = 2.0;
   static const _gap = 6.0;
-  static const _outerRadius = Radius.circular(_trackHeight / 2);
-  static const _innerRadius = Radius.circular(2);
+  static const _outerRadius = Radius.zero;
+  static const _innerRadius = Radius.zero;
   static const _tickRadius = 2.0;
 
   @override
@@ -411,9 +411,11 @@ class _GappedSliderShape extends SliderShape {
           continue;
         }
         final isLeft = tickX < x;
-        canvas.drawCircle(
-          Offset(tickX, size.height / 2),
-          _tickRadius,
+        canvas.drawRect(
+          Rect.fromCircle(
+            center: Offset(tickX, size.height / 2),
+            radius: _tickRadius,
+          ),
           Paint()..color = isLeft == ltr ? activeTick : inactiveTick,
         );
       }

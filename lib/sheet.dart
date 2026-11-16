@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:math' as math;
-import 'dart:ui' show lerpDouble;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
@@ -9,7 +7,6 @@ import 'package:prism_ui/color.dart';
 import 'package:prism_ui/context.dart';
 import 'package:prism_ui/inherited.dart';
 import 'package:prism_ui/navigator.dart';
-import 'package:prism_ui/shape.dart';
 import 'package:prism_ui/view_scope.dart';
 
 import 'form_sheet.dart';
@@ -47,31 +44,10 @@ enum SheetType {
 const stackedSheetPeek = 10.0;
 const stackedSheetScale = 0.9204;
 
-const _sheetCorner = 38.0;
-
 const sheetFloatInset = 8.0;
 
-/// A foot rounder than a square display's corners would show beside it;
-/// where the platform reports no corners, a floating foot matches the top.
-BorderRadius floatingSheetRadius(BorderRadius? display, double float) {
-  final corners = display ?? BorderRadius.zero;
-  Radius top(Radius corner) => Radius.circular(
-    corner.x > 0 ? math.min(corner.x, _sheetCorner) : AppCorner.xxl,
-  );
-  Radius foot(Radius corner) => Radius.circular(
-    lerpDouble(
-      math.min(corner.x, _sheetCorner),
-      corner.x > 0 ? _sheetCorner : AppCorner.xxl,
-      float,
-    )!,
-  );
-  return BorderRadius.only(
-    topLeft: top(corners.topLeft),
-    topRight: top(corners.topRight),
-    bottomLeft: foot(corners.bottomLeft),
-    bottomRight: foot(corners.bottomRight),
-  );
-}
+BorderRadius floatingSheetRadius(BorderRadius? display, double float) =>
+    BorderRadius.zero;
 
 BorderRadius bottomSheetRadiusOf(BuildContext context) =>
     floatingSheetRadius(MediaQuery.displayCornerRadiiOf(context), 0);

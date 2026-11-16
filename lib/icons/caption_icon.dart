@@ -37,7 +37,7 @@ class _CaptionGlyphPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1
       ..strokeJoin = StrokeJoin.round;
-    const corner = Radius.circular(1);
+    const corner = Radius.zero;
     // Every coordinate sits on a half pixel so a one pixel stroke covers a
     // single device pixel at 100% scaling.
     final box = (Offset.zero & size).deflate(0.5);

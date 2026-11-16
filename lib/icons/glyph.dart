@@ -43,13 +43,7 @@ class GlyphBox extends GlyphShape {
   @override
   Path get path => Path()
     ..addRSuperellipse(
-      RSuperellipse.fromLTRBR(
-        left,
-        top,
-        right,
-        bottom,
-        Radius.circular(radius),
-      ),
+      RSuperellipse.fromLTRBR(left, top, right, bottom, Radius.zero),
     );
 }
 
