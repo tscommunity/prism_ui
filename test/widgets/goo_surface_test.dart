@@ -24,11 +24,12 @@ void main() {
     expect(gooOutline([swollen, cancel], [0]).contains(gap), isFalse);
   });
 
-  test('a neck stays narrower than the pills it joins', () {
+  test('a neck between square panes stays inside their shared band', () {
     final outline = gooOutline([swollen, cancel], [16]);
 
-    expect(outline.contains(const Offset(310, 2)), isFalse);
-    expect(outline.contains(const Offset(310, 42)), isFalse);
+    expect(outline.contains(const Offset(310, 22)), isTrue);
+    expect(outline.contains(const Offset(310, 2)), isTrue);
+    expect(outline.contains(const Offset(310, 42)), isTrue);
   });
 
   testWidgets('buttons under a goo surface stand on its panes', (tester) async {
